@@ -1,0 +1,29 @@
+{
+  "name": "vod plugin for filmweb",
+  "version": "1.0",
+  "description": "vod plugin for filmweb",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action" :
+  {
+    "default_icon" : "icon-19.png",
+    "default_title" : "you're browsing filmweb with vod plugin"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.filmweb.pl/rankings/*"],
+      "js": ["jquery.js", "netflix.js"]
+    }
+  ],
+  "permissions" : [
+    "declarativeContent",
+	"storage"
+  ],
+  "icons" : {
+    "48" : "icon-48.png",
+    "128" : "icon-128.png"
+  },
+  "manifest_version": 2
+}
