@@ -10,7 +10,7 @@ function storeMovieCountries(movieTitle, appendCountriesCallback) {
             var $jQueryObject = $($.parseHTML(data));
             $(".movie-card", $jQueryObject).first().each(
                 function () {
-                    var movieHref = $(".card-image > a", $(this)).attr("href");
+                    var movieHref = $("a", $(this)).attr("href");
                     var movieHrefNormalized = toAlphanumericLowerCase(movieHref);
                     var flags = [];
                     if (movieHrefNormalized.includes(toAlphanumericLowerCase(movieTitle))) {
