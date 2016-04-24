@@ -29,6 +29,11 @@ function storeMovieCountries(movieTitle, appendCountriesCallback) {
     );
 }
 
+function appendCountries(tdElement, countries, movieTitle) {
+    links = countries.map(function (item) { return "<a href=\"https://www.netflix.com/search/" + movieTitle + "\">" + item + "</a>" })
+    tdElement.append(links.join(" "));
+}
+
 function processRankingMovies() {
     $(".rankingTable > tbody > tr > td:nth-child(3)").each(
         function () {
@@ -43,11 +48,9 @@ function processRankingMovies() {
 
             chrome.storage.local.get(toAlphanumericLowerCase(movieTitle), function (result) {
                 if (!result[toAlphanumericLowerCase(movieTitle)]) {
-                    storeMovieCountries(movieTitle, function (countries) {
-                        titleTd.append(countries.join(" "));
-                    });
+                    storeMovieCountries(movieTitle, function (countries) { appendCountries(titleTd, countries, movieTitle) });
                 } else {
-                    titleTd.append(result[toAlphanumericLowerCase(movieTitle)].join(" "));
+                    appendCountries(titleTd, result[toAlphanumericLowerCase(movieTitle)], movieTitle);
                 }
             });
         }
