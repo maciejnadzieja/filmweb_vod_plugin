@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["http://www.filmweb.pl/rankings/*"],
-      "js": ["jquery.js", "netflix.js"]
+      "js": ["jquery.js", "filmweb.js", "netflix.js", "cdapl.js", "main.js"]
     }
   ],
   "permissions" : [
